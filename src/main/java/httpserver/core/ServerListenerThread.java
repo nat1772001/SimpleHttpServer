@@ -12,7 +12,10 @@ import java.net.Socket;
 
 public class ServerListenerThread extends Thread {
 
+<<<<<<< HEAD
     private final static Logger LOGGER = LoggerFactory.getLogger(ServerListenerThread.class);
+=======
+>>>>>>> 9a04dacfe08289b928548f308ab0086af0028fe9
     private int port;
     private String webroot;
     private ServerSocket serverSocket;
