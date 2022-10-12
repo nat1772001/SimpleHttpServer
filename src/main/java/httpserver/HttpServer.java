@@ -13,12 +13,18 @@ import java.net.Socket;
 public class HttpServer {
     public static void main(String[] args) throws IOException {
         System.out.println("Server starting....");
+
         ConfigurationManager.getInstance().loadConfigurationFile("src/main/resources/http.json");
         Configuration conf = ConfigurationManager.getInstance().getCurrentConfiguration();
-        System.out.println(conf.getPort());
-        System.out.println(conf.getWebroot());
+        System.out.println("Using Port: " + conf.getPort());
+        System.out.println("Using WebRoot: " + conf.getWebroot());
 
-        ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroot());
-        serverListenerThread.start();
+        try{
+            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroot());
+            serverListenerThread.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
